@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using JobAutomation.Application.Interfaces.AI;
 using JobAutomation.Application.Interfaces.FileSystem;
+using JobAutomation.Application.Interfaces.Persistence;
 using JobAutomation.Infrastructure.AI;
 using JobAutomation.Infrastructure.FileSystem;
+using JobAutomation.Infrastructure.Persistence.Repositories;
+using JobAutomation.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,6 +37,17 @@ namespace JobAutomation.Infrastructure
             {
                 client.BaseAddress = new Uri("http://localhost:11434");
             });
+
+            services.AddDbContext<JobAutomationDbContext>(options =>
+            {
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IJobRepository, JobRepository>();
+            services.AddScoped<IEmailDraftRepository, EmailDraftRepository>();
+
 
             return services;
         }
