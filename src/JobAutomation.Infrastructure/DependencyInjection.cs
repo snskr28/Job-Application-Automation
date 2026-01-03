@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using JobAutomation.Application.Interfaces.Email;
+using JobAutomation.Infrastructure.Email;
 
 namespace JobAutomation.Infrastructure
 {
@@ -52,7 +54,7 @@ namespace JobAutomation.Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IJobRepository, JobRepository>();
             services.AddScoped<IEmailDraftRepository, EmailDraftRepository>();
-
+            services.AddScoped<IEmailSender, SmtpEmailSender>();
 
             return services;
         }

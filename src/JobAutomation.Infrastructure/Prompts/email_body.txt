@@ -21,8 +21,16 @@ Instructions:
 - Briefly connect the candidate’s experience to the role
 - Highlight 1–2 relevant strengths only
 - Keep the email between 120–180 words
-- End with a polite call-to-action (not pushy)
+- End with a polite, low-pressure closing that invites conversation, not action
 - Avoid listing more than two skills in a single sentence
+- Start the email by mentioning the role naturally (e.g. “I came across…” or “I saw…”)
+- Avoid formal phrases like “In light of”, “I am excited to apply”, or “I believe I am a strong fit”
+- Highlight only 1 primary strength and 1–2 supporting skills
+- Do not list more than 3 technologies in total
+- Prefer experience-based statements (“I’ve worked on…”) over claims (“I believe I can…”)
+
+
+
 
 Write only the email body.
 Do not include a subject line.
