@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JobAutomation.Application.Interfaces.AI;
 using JobAutomation.Application.Interfaces.FileSystem;
+using JobAutomation.Application.Interfaces.Persistence;
 using JobAutomation.Domain.Entities;
 
 namespace JobAutomation.Application.Features.EmailGeneration
@@ -13,21 +14,42 @@ namespace JobAutomation.Application.Features.EmailGeneration
     {
         private readonly ILLMService _llmService;
         private readonly IPromptReader _promptReader;
+        private readonly IUserRepository _userRepository;
+        private readonly IJobRepository _jobRepository;
+        private readonly IEmailDraftRepository _emailDraftRepository;
 
         public GenerateEmailHandler(
             ILLMService llmService,
-            IPromptReader promptReader)
+            IPromptReader promptReader,
+            IUserRepository userRepository,
+            IJobRepository jobRepository,
+            IEmailDraftRepository emailDraftRepository)
         {
             _llmService = llmService;
             _promptReader = promptReader;
+            _userRepository = userRepository;
+            _jobRepository = jobRepository;
+            _emailDraftRepository = emailDraftRepository;
         }
 
         public async Task<GenerateEmailResult> HandleAsync(
             GenerateEmailCommand command,
-            Job job,
-            User user,
             CancellationToken cancellationToken = default)
         {
+            var user = await _userRepository.GetByIdAsync(
+                command.UserId,
+                cancellationToken);
+
+            if (user is null)
+                throw new InvalidOperationException("User not found.");
+
+            var job = await _jobRepository.GetByIdAsync(
+                command.JobId,
+                cancellationToken);
+
+            if (job is null)
+                throw new InvalidOperationException("Job not found.");
+
             var systemPrompt =
                 await _promptReader.ReadAsync("system", cancellationToken);
 
@@ -36,7 +58,7 @@ namespace JobAutomation.Application.Features.EmailGeneration
 
             var userPrompt = userPromptTemplate
                 .Replace("{{JobTitle}}", job.Title)
-                .Replace("{{CompanyName}}", "Company") // placeholder for now
+                .Replace("{{CompanyName}}", "Company") // will be resolved later
                 .Replace("{{JobDescription}}", job.Description)
                 .Replace("{{ResumeText}}", user.ResumePath)
                 .Replace("{{Tone}}", user.PreferredTone);
@@ -51,6 +73,10 @@ namespace JobAutomation.Application.Features.EmailGeneration
                 subject: $"Application for {job.Title}",
                 body: emailBody,
                 generatedByAI: true);
+
+            await _emailDraftRepository.AddAsync(
+                emailDraft,
+                cancellationToken);
 
             return new GenerateEmailResult(
                 emailDraft.Id,
