@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace JobAutomation.Infrastructure.Persistence
 {
@@ -14,7 +15,6 @@ namespace JobAutomation.Infrastructure.Persistence
     {
         public JobAutomationDbContext CreateDbContext(string[] args)
         {
-            // Always resolve from solution root
             var basePath = Path.GetFullPath(
                 Path.Combine(
                     AppContext.BaseDirectory,
@@ -24,15 +24,16 @@ namespace JobAutomation.Infrastructure.Persistence
                 .SetBasePath(basePath)
                 .AddJsonFile(
                     "src/JobAutomation.API/appsettings.json",
-                    optional: false,
-                    reloadOnChange: false)
+                    optional: false)
                 .Build();
 
             var optionsBuilder =
                 new DbContextOptionsBuilder<JobAutomationDbContext>();
 
-            optionsBuilder.UseSqlServer(
-                configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder
+                .UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                .ConfigureWarnings(w =>
+                    w.Ignore(RelationalEventId.PendingModelChangesWarning));
 
             return new JobAutomationDbContext(optionsBuilder.Options);
         }

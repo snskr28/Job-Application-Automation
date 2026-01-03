@@ -15,9 +15,6 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Status)
-                .IsRequired();
-
             builder.Property(x => x.SentAt);
 
             builder.HasOne<Job>()
@@ -34,6 +31,14 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
                 .WithMany()
                 .HasForeignKey(x => x.EmailDraftId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .ValueGeneratedNever();
+
+            builder.Property(x => x.Status)
+                .HasConversion<int>()
+                .IsRequired();
         }
     }
 }

@@ -231,6 +231,17 @@ namespace JobAutomation.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f1c47462-4189-4de0-ab21-d4217ee9d633"),
+                            CreatedAt = new DateTime(2026, 1, 3, 10, 27, 53, 953, DateTimeKind.Utc).AddTicks(3528),
+                            Email = "sanskarbosmia@gmail.com",
+                            FullName = "Sanskar Bosmia",
+                            PreferredTone = "professional",
+                            ResumePath = "Full Stack Developer specializing in Angular and .NET with expertise in building high-performance REST APIs, advanced analytical dashboards, and scalable fintech applications. Experienced in Clean Architecture, Entity Framework Core, SQL optimization, and Azure cloud deployment."
+                        });
                 });
 
             modelBuilder.Entity("JobAutomation.Domain.Entities.Application", b =>

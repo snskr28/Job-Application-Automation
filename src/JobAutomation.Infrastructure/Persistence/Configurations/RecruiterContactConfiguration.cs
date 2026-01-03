@@ -32,6 +32,10 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
                 .WithMany()
                 .HasForeignKey(x => x.CompanyId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .ValueGeneratedNever();
         }
     }
 }

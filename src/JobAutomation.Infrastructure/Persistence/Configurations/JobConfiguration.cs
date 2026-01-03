@@ -31,6 +31,10 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
             builder.HasIndex(x => x.CompanyId);
             builder.HasIndex(x => x.DiscoveredAt);
             builder.HasIndex(x => x.IsInterested);
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .ValueGeneratedNever();
         }
     }
 }

@@ -29,6 +29,10 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
             builder.Property(x => x.PreferredTone)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .ValueGeneratedNever();
         }
     }
 }

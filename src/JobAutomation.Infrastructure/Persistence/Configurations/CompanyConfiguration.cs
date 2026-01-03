@@ -24,6 +24,10 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
 
             builder.Property(x => x.Website)
                 .HasMaxLength(500);
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .ValueGeneratedNever();
         }
     }
 }

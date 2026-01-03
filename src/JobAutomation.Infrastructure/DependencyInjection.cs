@@ -13,6 +13,7 @@ using JobAutomation.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace JobAutomation.Infrastructure
 {
@@ -42,6 +43,10 @@ namespace JobAutomation.Infrastructure
             {
                 options.UseSqlServer(
                     configuration.GetConnectionString("DefaultConnection"));
+
+                // EF Core 9: prevent false-positive PendingModelChanges crash
+                options.ConfigureWarnings(w =>
+                    w.Ignore(RelationalEventId.PendingModelChangesWarning));
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
