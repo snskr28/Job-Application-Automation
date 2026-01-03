@@ -26,16 +26,15 @@ namespace JobAutomation.Infrastructure.AI
             string userPrompt,
             CancellationToken cancellationToken = default)
         {
-            var combinedPrompt =
-$"""
-<System>
-{systemPrompt}
-</System>
-
-<User>
-{userPrompt}
-</User>
-""";
+            var combinedPrompt = $"""
+                                  <System>
+                                  {systemPrompt}
+                                  </System>
+                                  
+                                  <User>
+                                  {userPrompt}
+                                  </User>
+                                  """;
 
             var request = new OllamaGenerateRequest
             {
