@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{663F2AAF-0775-4500-92D6-6164E2DD7529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobAutomation.Domain", "src\JobAutomation.Domain\JobAutomation.Domain.csproj", "{E1DF2697-0DBD-40D1-949A-185837A208E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobAutomation.Application", "src\JobAutomation.Application\JobAutomation.Application.csproj", "{031D2AB8-2748-4C0A-9E9C-AB2AFF1E8445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobAutomation.Infrastructure", "src\JobAutomation.Infrastructure\JobAutomation.Infrastructure.csproj", "{86B194E2-EBE2-4AAF-BFC8-EFEC04689A34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobAutomation.API", "src\JobAutomation.API\JobAutomation.API.csproj", "{C8D7DDED-F918-4D70-851D-344149DCDEE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{46F60BC6-7FCD-4F8E-9F3C-17727FD63163}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobAutomation.Application.Tests", "tests\JobAutomation.Application.Tests\JobAutomation.Application.Tests.csproj", "{1ED9B6E0-66BD-4FE4-85D4-032DD1BF74D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1DF2697-0DBD-40D1-949A-185837A208E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1DF2697-0DBD-40D1-949A-185837A208E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1DF2697-0DBD-40D1-949A-185837A208E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1DF2697-0DBD-40D1-949A-185837A208E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{031D2AB8-2748-4C0A-9E9C-AB2AFF1E8445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{031D2AB8-2748-4C0A-9E9C-AB2AFF1E8445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{031D2AB8-2748-4C0A-9E9C-AB2AFF1E8445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{031D2AB8-2748-4C0A-9E9C-AB2AFF1E8445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B194E2-EBE2-4AAF-BFC8-EFEC04689A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B194E2-EBE2-4AAF-BFC8-EFEC04689A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B194E2-EBE2-4AAF-BFC8-EFEC04689A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B194E2-EBE2-4AAF-BFC8-EFEC04689A34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D7DDED-F918-4D70-851D-344149DCDEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D7DDED-F918-4D70-851D-344149DCDEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D7DDED-F918-4D70-851D-344149DCDEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D7DDED-F918-4D70-851D-344149DCDEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED9B6E0-66BD-4FE4-85D4-032DD1BF74D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED9B6E0-66BD-4FE4-85D4-032DD1BF74D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED9B6E0-66BD-4FE4-85D4-032DD1BF74D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED9B6E0-66BD-4FE4-85D4-032DD1BF74D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1DF2697-0DBD-40D1-949A-185837A208E8} = {663F2AAF-0775-4500-92D6-6164E2DD7529}
+		{031D2AB8-2748-4C0A-9E9C-AB2AFF1E8445} = {663F2AAF-0775-4500-92D6-6164E2DD7529}
+		{86B194E2-EBE2-4AAF-BFC8-EFEC04689A34} = {663F2AAF-0775-4500-92D6-6164E2DD7529}
+		{C8D7DDED-F918-4D70-851D-344149DCDEE0} = {663F2AAF-0775-4500-92D6-6164E2DD7529}
+		{1ED9B6E0-66BD-4FE4-85D4-032DD1BF74D8} = {46F60BC6-7FCD-4F8E-9F3C-17727FD63163}
+	EndGlobalSection
+EndGlobal
