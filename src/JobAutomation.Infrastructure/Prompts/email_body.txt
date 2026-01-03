@@ -1,23 +1,28 @@
-Write a short job application email for the role of {{JobTitle}} at {{CompanyName}}.
+Write a professional job application email based on the following details.
 
-Context:
-This is a direct email to a recruiter or hiring manager.
-The email should be between 120 and 180 words.
-The tone should be {{Tone}}.
-The email should feel personally written, not templated.
+Job Title:
+{{JobTitle}}
 
-Job Description:
+Company:
+{{CompanyName}}
+
+Job Description (for context only):
 {{JobDescription}}
 
-Candidate Resume:
+Candidate Background:
 {{ResumeText}}
 
-Rules:
-Mention only the most relevant skills for this role.
-Do not list technologies unless they are directly relevant.
-Avoid generic phrases like "passionate", "hard-working", "rockstar", or "fast learner".
-Avoid repeating the job description.
-End with a simple and polite closing.
-Do not include emojis, bullet points, or formatting.
-Do not include placeholders.
-Return only the email body text.
+Preferred Tone:
+{{Tone}}
+
+Instructions:
+- - Start with a confident, natural opening that avoids generic phrases like 
+  “I am writing to express my interest”
+- Briefly connect the candidate’s experience to the role
+- Highlight 1–2 relevant strengths only
+- Keep the email between 120–180 words
+- End with a polite call-to-action (not pushy)
+- Avoid listing more than two skills in a single sentence
+
+Write only the email body.
+Do not include a subject line.

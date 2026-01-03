@@ -10,6 +10,7 @@ namespace JobAutomation.Domain.Entities
     public class Job : BaseEntity
     {
         public Guid CompanyId { get; private set; }
+        public string CompanyName { get; private set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
         public string Location { get; private set; }
@@ -21,12 +22,14 @@ namespace JobAutomation.Domain.Entities
 
         public Job(
             Guid companyId,
+            string companyName,
             string title,
             string description,
             string location,
             string jobUrl)
         {
             CompanyId = companyId;
+            CompanyName = companyName;
             Title = title;
             Description = description;
             Location = location;

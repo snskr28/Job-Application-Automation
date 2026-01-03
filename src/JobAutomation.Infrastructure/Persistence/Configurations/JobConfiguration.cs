@@ -35,6 +35,11 @@ namespace JobAutomation.Infrastructure.Persistence.Configurations
             builder.Property(x => x.CreatedAt)
                 .IsRequired()
                 .ValueGeneratedNever();
+
+            builder.Property(x => x.CompanyName)
+                .IsRequired()
+                .HasMaxLength(200);
+
         }
     }
 }

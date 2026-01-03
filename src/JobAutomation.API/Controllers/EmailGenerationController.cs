@@ -45,11 +45,13 @@ namespace JobAutomation.API.Controllers
 
                 var job = new Job(
                     companyId: Guid.NewGuid(),
+                    companyName: request.CompanyName ?? "the hiring team",
                     title: request.JobTitle!,
                     description: request.JobDescription!,
                     location: request.JobLocation,
                     jobUrl: request.JobUrl
                 );
+
 
                 await _jobRepository.AddAsync(job, cancellationToken);
                 jobId = job.Id;

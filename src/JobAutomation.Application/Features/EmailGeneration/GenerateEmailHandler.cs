@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using JobAutomation.Application.Interfaces.AI;
 using JobAutomation.Application.Interfaces.FileSystem;
@@ -52,7 +53,7 @@ namespace JobAutomation.Application.Features.EmailGeneration
 
             var userPrompt = userPromptTemplate
                 .Replace("{{JobTitle}}", job.Title)
-                .Replace("{{CompanyName}}", "Company")
+                .Replace("{{CompanyName}}", job.CompanyName ?? "your team")
                 .Replace("{{JobDescription}}", job.Description)
                 .Replace("{{ResumeText}}", user.ResumePath)
                 .Replace("{{Tone}}", user.PreferredTone);
@@ -61,6 +62,14 @@ namespace JobAutomation.Application.Features.EmailGeneration
                 systemPrompt,
                 userPrompt,
                 cancellationToken);
+
+            emailBody = Regex.Replace(
+                emailBody,
+                @"(?i)(best regards|sincerely|regards)[\s\S]*$",
+                string.Empty
+            ).Trim();
+
+            emailBody += $"\n\nBest regards,\n{user.FullName}";
 
             var emailDraft = new EmailDraft(
                 jobId: job.Id,
