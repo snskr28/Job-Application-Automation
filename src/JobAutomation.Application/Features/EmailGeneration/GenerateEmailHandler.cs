@@ -33,22 +33,16 @@ namespace JobAutomation.Application.Features.EmailGeneration
         }
 
         public async Task<GenerateEmailResult> HandleAsync(
-            GenerateEmailCommand command,
-            CancellationToken cancellationToken = default)
+    GenerateEmailCommand command,
+    CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetByIdAsync(
-                command.UserId,
-                cancellationToken);
+            var user = await _userRepository
+                .GetByIdAsync(command.UserId, cancellationToken)
+                ?? throw new InvalidOperationException("User not found");
 
-            if (user is null)
-                throw new InvalidOperationException("User not found.");
-
-            var job = await _jobRepository.GetByIdAsync(
-                command.JobId,
-                cancellationToken);
-
-            if (job is null)
-                throw new InvalidOperationException("Job not found.");
+            var job = await _jobRepository
+                .GetByIdAsync(command.JobId, cancellationToken)
+                ?? throw new InvalidOperationException("Job not found");
 
             var systemPrompt =
                 await _promptReader.ReadAsync("system", cancellationToken);
@@ -58,7 +52,7 @@ namespace JobAutomation.Application.Features.EmailGeneration
 
             var userPrompt = userPromptTemplate
                 .Replace("{{JobTitle}}", job.Title)
-                .Replace("{{CompanyName}}", "Company") // will be resolved later
+                .Replace("{{CompanyName}}", "Company")
                 .Replace("{{JobDescription}}", job.Description)
                 .Replace("{{ResumeText}}", user.ResumePath)
                 .Replace("{{Tone}}", user.PreferredTone);
@@ -69,20 +63,19 @@ namespace JobAutomation.Application.Features.EmailGeneration
                 cancellationToken);
 
             var emailDraft = new EmailDraft(
-                job.Id,
+                jobId: job.Id,
                 subject: $"Application for {job.Title}",
                 body: emailBody,
-                generatedByAI: true);
+                generatedByAI: true
+            );
 
-            await _emailDraftRepository.AddAsync(
-                emailDraft,
-                cancellationToken);
+            await _emailDraftRepository.AddAsync(emailDraft, cancellationToken);
 
             return new GenerateEmailResult(
                 emailDraft.Id,
                 emailDraft.Subject,
                 emailDraft.Body,
-                emailDraft.GeneratedByAI);
+                true);
         }
     }
 }
