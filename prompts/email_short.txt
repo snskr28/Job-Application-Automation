@@ -1,0 +1,16 @@
+Write a very concise job application email for the role of {{JobTitle}} at {{CompanyName}}.
+
+Constraints:
+Maximum 100 words.
+Assume the recruiter is busy.
+Be respectful, direct, and clear.
+Highlight only one or two of the strongest matching points.
+Avoid unnecessary introductions or fluff.
+
+Job Description:
+{{JobDescription}}
+
+Candidate Resume:
+{{ResumeText}}
+
+Return only the email body text.

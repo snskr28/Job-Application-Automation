@@ -1,0 +1,13 @@
+Generate one clear and professional subject line for a job application email.
+
+Job Title: {{JobTitle}}
+Company Name: {{CompanyName}}
+
+Rules:
+Keep it under 60 characters.
+Avoid buzzwords.
+Avoid emojis.
+Avoid phrases like "Excited to apply".
+Do not use excessive capitalization.
+
+Return only the subject line.

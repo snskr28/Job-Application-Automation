@@ -1,0 +1,10 @@
+Improve the following email without changing its meaning.
+
+Guidelines:
+Preserve the user's wording as much as possible.
+Improve flow, grammar, and clarity only.
+Do not add new information.
+Do not make it sound overly polished or corporate.
+
+Email:
+{{UserEditedEmail}}
