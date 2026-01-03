@@ -10,6 +10,7 @@ namespace JobAutomation.Domain.Entities
     public class EmailDraft : BaseEntity
     {
         public Guid JobId { get; private set; }
+        public Guid UserId { get; private set; }
         public string Subject { get; private set; }
         public string Body { get; private set; }
         public bool GeneratedByAI { get; private set; }
@@ -18,11 +19,13 @@ namespace JobAutomation.Domain.Entities
 
         public EmailDraft(
             Guid jobId,
+            Guid userId,
             string subject,
             string body,
             bool generatedByAI)
         {
             JobId = jobId;
+            UserId = userId;
             Subject = subject;
             Body = body;
             GeneratedByAI = generatedByAI;

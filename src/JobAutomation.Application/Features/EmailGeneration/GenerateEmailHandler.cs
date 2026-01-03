@@ -73,6 +73,7 @@ namespace JobAutomation.Application.Features.EmailGeneration
 
             var emailDraft = new EmailDraft(
                 jobId: job.Id,
+                userId: user.Id,
                 subject: $"Application for {job.Title}",
                 body: emailBody,
                 generatedByAI: true

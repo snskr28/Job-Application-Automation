@@ -12,6 +12,7 @@ namespace JobAutomation.Application.Interfaces.Email
             string to,
             string subject,
             string body,
+            string? attachmentPath,
             CancellationToken cancellationToken);
     }
 }

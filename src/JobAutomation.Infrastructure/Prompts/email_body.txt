@@ -16,7 +16,8 @@ Preferred Tone:
 {{Tone}}
 
 Instructions:
-- - Start with a confident, natural opening that avoids generic phrases like 
+- Greet with Hello or Dearing Hiring Manager like phrases.
+- Start with a confident, natural opening that avoids generic phrases like 
   “I am writing to express my interest”
 - Briefly connect the candidate’s experience to the role
 - Highlight 1–2 relevant strengths only

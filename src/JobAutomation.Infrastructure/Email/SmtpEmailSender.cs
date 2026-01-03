@@ -23,6 +23,7 @@ namespace JobAutomation.Infrastructure.Email
             string to,
             string subject,
             string body,
+            string? attachmentPath,
             CancellationToken cancellationToken)
         {
             var smtpConfig = _configuration.GetSection("Smtp");
@@ -38,6 +39,11 @@ namespace JobAutomation.Infrastructure.Email
             };
 
             message.To.Add(to);
+
+            if (!string.IsNullOrEmpty(attachmentPath) && File.Exists(attachmentPath))
+            {
+                message.Attachments.Add(new Attachment(attachmentPath));
+            }
 
             using var client = new SmtpClient(
                 smtpConfig["Host"],
