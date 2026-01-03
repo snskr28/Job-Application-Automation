@@ -26,18 +26,6 @@ namespace JobAutomation.Infrastructure.Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(
                 typeof(JobAutomationDbContext).Assembly);
-
-            var userId = Guid.NewGuid();
-
-            modelBuilder.Entity<User>().HasData(new
-            {
-                Id = userId,
-                FullName = "Sanskar Bosmia",
-                Email = "sanskarbosmia@gmail.com",
-                ResumePath = "Full Stack Developer specializing in Angular and .NET with expertise in building high-performance REST APIs, advanced analytical dashboards, and scalable fintech applications. Experienced in Clean Architecture, Entity Framework Core, SQL optimization, and Azure cloud deployment.",
-                PreferredTone = "professional",
-                CreatedAt = DateTime.UtcNow
-            });
         }
     }
 }
