@@ -451,8 +451,9 @@ $RECYCLE.BIN/
 # User-specific appsettings (contains secrets)
 appsettings.Development.json
 appsettings.Local.json
+appsettings.json
 **/appsettings.*.json
-!**/appsettings.json
+**/appsettings.json
 
 # Environment variables
 .env
