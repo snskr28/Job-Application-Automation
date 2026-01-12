@@ -21,6 +21,7 @@ namespace JobAutomation.Infrastructure.Persistence
         public DbSet<RecruiterContact> RecruiterContacts => Set<RecruiterContact>();
         public DbSet<EmailDraft> EmailDrafts => Set<EmailDraft>();
         public DbSet<JobAutomation.Domain.Entities.Application> Applications => Set<JobAutomation.Domain.Entities.Application>();
+        public DbSet<Contact> Contacts => Set<Contact>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

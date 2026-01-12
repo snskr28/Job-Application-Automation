@@ -55,6 +55,8 @@ namespace JobAutomation.Infrastructure
             services.AddScoped<IJobRepository, JobRepository>();
             services.AddScoped<IEmailDraftRepository, EmailDraftRepository>();
             services.AddScoped<IEmailSender, SmtpEmailSender>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+
 
             return services;
         }
