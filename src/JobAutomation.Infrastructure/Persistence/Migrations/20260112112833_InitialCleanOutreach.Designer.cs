@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobAutomation.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(JobAutomationDbContext))]
-    [Migration("20260103124741_AddUserToEmailDraft")]
-    partial class AddUserToEmailDraft
+    [Migration("20260112112833_InitialCleanOutreach")]
+    partial class InitialCleanOutreach
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

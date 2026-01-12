@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobAutomation.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserToEmailDraft : Migration
+    public partial class InitialCleanOutreach : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
